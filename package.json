@@ -4,7 +4,8 @@
   "description": "This is the Todo application with the storage functionality with the mongoDB database",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "Lovesh Bodhani",
   "license": "ISC",
