@@ -1,0 +1,37 @@
+<%- include('partials/header') %>
+
+<main>
+  <form action="/add" method="POST" id="addTaskForm">
+  <input type="text" name="title" placeholder="Enter task title" />
+  <select name="priority">
+    <option value="low">Low</option>
+    <option value="medium">Medium</option>
+    <option value="high">High</option>
+  </select>
+  <button type="submit">Add Task</button>
+</form>
+
+<ul id="taskList">
+  <% tasks.forEach(task => { %>
+    <li>
+      <form action="/edit/<%= task._id %>" method="POST" style="display:inline;">
+        <input type="text" name="title" value="<%= task.title %>" required />
+        <select name="priority" required>
+          <option value="low" <%= task.priority === 'low' ? 'selected' : '' %>>Low</option>
+          <option value="medium" <%= task.priority === 'medium' ? 'selected' : '' %>>Medium</option>
+          <option value="high" <%= task.priority === 'high' ? 'selected' : '' %>>High</option>
+        </select>
+        <button type="submit" title="Update Task">✏️</button>
+      </form>
+
+      <form action="/delete/<%= task._id %>" method="POST" style="display:inline;">
+        <button type="submit" title="Delete Task" onclick="return confirm('Delete this task?');">🗑️</button>
+      </form>
+    </li>
+  <% }) %>
+</ul>
+
+</main>
+
+
+<%- include('partials/footer') %>
